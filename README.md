@@ -95,11 +95,11 @@ const options = {
 ```
 
 nombre                 | valor                              | descripción
----------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 className              | 'table table-hover table-bordered' | un `string` con las clases que se quiera agregar a la tabla
 actions                | object                             | objeto con la definición de las acciones que mostrara en la columna acciones
 actions.view           | object                             | espera un `Component` para ser renderizado en cada `row` y clases css
-actions.view.Component | `React.Component`                  | espera un componente `React`, en el componente es accesible como propiedad el objeto de la `row` donde este se creara y las clases css. `(ver código de ejemplo 01)`
+actions.view.Component | `React.Component`                  | espera un componente `React`, en el componente es accesible como propiedad el objeto de la `row` donde este se creara y las clases css. [ver código de ejemplo 01](#01-componente-react-para-actionsviewcomponent)
 actions.view.cssClass  | string                             | clases css dentro de un string
 actions.css            | object                             | css que se desee pasar al `<td>`
 hiddenActions          | boolean                            | posibilita ocultar o mostrar las acciones, por defecto es `true`
