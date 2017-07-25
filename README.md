@@ -88,9 +88,16 @@ const options = {
 };
 ```
 
-nombre | valor
------- | -----
-asda   | sdas
+nombre                 | valor                              | descripcción
+---------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+className              | 'table table-hover table-bordered' | un `string` con las clases que se quiera agregar a la tabla
+actions                | object                             | objeto con la definición de las acciones que mostrara en la columna acciones
+actions.view           | object                             | espera un `Component` para ser renderizado en cada `row` y clases css
+actions.view.Component | `React.Component`                  | espera un componente `React`, en el componente es accesible como propiedad el objeto de la `row` donde este se creara y las clases css. `(ver codigo de ejemplo 01)`
+actions.view.cssClass  | string                             | clases css dentro de un string
+actions.css            | string                             | string que sera pasado directamente a la etiqueta `<td>` de la columna acciones
+hiddenActions          | boolean                            | posibilita oculat o mostrar la acciones, por defecto es `true`
+columns                | array                              | esta seccion es donde se mapea los atributos de los objetos que retorna el servicio, el orden de las columnas tiene directa relación con el orden de los objetos en este `array`
 
 PROPS NAME: options
 
@@ -117,6 +124,39 @@ PROPS NAME: options
 ```
 
 --------------------------------------------------------------------------------
+
+## Códigos de Ejemplo
+
+- 01 `Componente React para actions.view.Component`
+
+```javascript
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
+class ComponentActionsView extends Component {
+    render() {
+        return (
+          <div className="btn-group">
+            <Link
+              to={`/url-01/${this.props.object.id}`}
+              className="btn btn-danger btn-sm"
+            >Delete</Link>
+            <Lin
+              to={`/url-02/${this.props.object.id}`}
+              className={this.props.cssClass}
+            >Edit</Link>
+          </div>
+        );
+    }
+}
+ComponentActionsView.propTypes = {
+    cssClass: PropTypes.string.isRequired,
+    object: PropTypes.object.isRequired,
+};
+
+export default ComponentActionsView;
+```
 
 @name: attr.title: @type: String
 
