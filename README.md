@@ -95,7 +95,7 @@ actions                | object                             | objeto con la defi
 actions.view           | object                             | espera un `Component` para ser renderizado en cada `row` y clases css
 actions.view.Component | `React.Component`                  | espera un componente `React`, en el componente es accesible como propiedad el objeto de la `row` donde este se creara y las clases css. `(ver codigo de ejemplo 01)`
 actions.view.cssClass  | string                             | clases css dentro de un string
-                       | object                             | css ue se desee pasar al `<td>`
+actions.css            | object                             | css ue se desee pasar al `<td>`
 hiddenActions          | boolean                            | posibilita oculat o mostrar la acciones, por defecto es `true`
 columns                | array                              | esta seccion es donde se mapea los atributos de los objetos que retorna el servicio, el orden de las columnas tiene directa relación con el orden de los objetos en este `array`
 
@@ -110,7 +110,7 @@ templateWithInstance   | function: params instance, definitionCol              |
 inputSeach             | string                                                | tipo de buqueda que se desea hacer, sepuede utilizar: `exact` lo que genera el parametro en query `&name_atribute=input_value`, cualquier otro texto, se concatena al nombre del atributo: `blah` => `$name_atribute__blah=input_value`. Este parametro es opcional, solo si se requiere un input para filtro por campo
 inputSeachComponet     | function: params object.handlerChange, object.element | funcion para sobreescribir el input por defecto para los filtros, se pasa desde `Table2`: `object.handlerChange`(callback para ejecutar el onChange y enviar el value del input al servicio), `object.element`(objeto actual de la columna que se define en el array columns), `(ver codigo de ejemplo 03)`, por defecto este campo no es necesario, por norma este atributo debe ir acompañado del atributo `inputSeach`, `object.handlerChange` espera un unico atributo que puede ser directamente el valor a buscar o el evento de tipo `Event`
 inputSearchPlaceholder | string                                                | texto a mostrar como placeholder en el input search, por defecto si se omite, `Table2` crea uno con formato `Ingrese atribute_name`
-noSorting              | boolen                                                | sirve para quitar la capacidad de hacer `sorting` en una columna, por defecto es true
+noSorting              | boolean                                               | sirve para quitar la capacidad de hacer `sorting` en una columna, por defecto es true
 css                    | object                                                | css ue se desee pasar al `<td>`
 
 ## Códigos de Ejemplo
