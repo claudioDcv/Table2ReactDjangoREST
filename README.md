@@ -101,13 +101,13 @@ columns                | array                              | esta seccion es do
 
 ### array columns
 
-nombre               | valor                                    | descripcción
--------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-title                | string                                   | titulo de la columna que se ve en el header
-name                 | string                                   | nombre del atributo del objeto que se desea mostrar , existe la posibilidad de motrar atributos anidados de la siguiente manera `roles.admin.id`
-textIsEmpty          | string                                   | texto que se mostrara si el valor del atributo esta vacio
-templateWithInstance | function: params instance, definitionCol | por defecto cada columna muestra el valor mapeado dentro del `<td>`, pero si se desea un comportamiento especifico, se puede pasar una funcion con ese contenido `(ver codigo de ejemplo 02)`, la funcion utilizada siempre tendra dos parametros que le pasa `Table2`: `instance`(la instancia del objeto actual), `definitionCol`(el array columns), por defecto no es necesario utilizar este atributo
-inputSeachComponet   | function: params handlerChange, element  | funcion para sobreescribir el input por defecto para los filtros, se pasa desde `Table2`: `handlerChange`(callback para ejecutar el onChange y enviar el value del input al servicio), `element`(objeto actual de la columna que se define en el array columns)
+nombre               | valor                                                 | descripcción
+-------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+title                | string                                                | titulo de la columna que se ve en el header
+name                 | string                                                | nombre del atributo del objeto que se desea mostrar , existe la posibilidad de motrar atributos anidados de la siguiente manera `roles.admin.id`
+textIsEmpty          | string                                                | texto que se mostrara si el valor del atributo esta vacio
+templateWithInstance | function: params instance, definitionCol              | por defecto cada columna muestra el valor mapeado dentro del `<td>`, pero si se desea un comportamiento especifico, se puede pasar una funcion con ese contenido `(ver codigo de ejemplo 02)`, la funcion utilizada siempre tendra dos parametros que le pasa `Table2`: `instance`(la instancia del objeto actual), `definitionCol`(el array columns), por defecto no es necesario utilizar este atributo
+inputSeachComponet   | function: params object.handlerChange, object.element | funcion para sobreescribir el input por defecto para los filtros, se pasa desde `Table2`: `object.handlerChange`(callback para ejecutar el onChange y enviar el value del input al servicio), `object.element`(objeto actual de la columna que se define en el array columns), `(ver codigo de ejemplo 03)`
 
 handlerChange: this.onChangeSearch, element: props.element,
 
@@ -179,6 +179,37 @@ function User(instance) {
 }
 function Phone(instance) {
     return (<p>{formatPhone(instance.phone)}</p>);
+}
+```
+
+- 03 `functions` para cambiar el comportamiento de los `input` que aparecen en los header de las columnas para filtrar contenido
+
+```javascript
+
+function JobInputSearch(options) {
+    const className = options.element.className;
+    return (
+        <input
+          onChange={(e) => options.handlerChange(e)}
+          placeholder={options.element.inputSearchPlaceholder}
+          className={ className ? className : 'form-control'}/>
+    );
+}
+
+function RUTInputSearch(options) {
+    const className = options.element.className;
+    const changeFunc = function changeFunc(e) {
+        let val = e.target.value;
+        e.target.value = rutFormat(val);
+        options.handlerChange(rutClean(val));
+    };
+    return (
+        <input
+          onChange={(e) => changeFunc(e)}
+          placeholder={options.element.inputSearchPlaceholder}
+          className={ className ? className : 'form-control'}
+        />
+    );
 }
 ```
 
