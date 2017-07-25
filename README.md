@@ -95,8 +95,8 @@ actions                | object                             | objeto con la defi
 actions.view           | object                             | espera un `Component` para ser renderizado en cada `row` y clases css
 actions.view.Component | `React.Component`                  | espera un componente `React`, en el componente es accesible como propiedad el objeto de la `row` donde este se creara y las clases css. `(ver codigo de ejemplo 01)`
 actions.view.cssClass  | string                             | clases css dentro de un string
-actions.css            | object                             | css ue se desee pasar al `<td>`
-hiddenActions          | boolean                            | posibilita oculat o mostrar la acciones, por defecto es `true`
+actions.css            | object                             | css que se desee pasar al `<td>`
+hiddenActions          | boolean                            | posibilita ocultar o mostrar la acciones, por defecto es `true`
 columns                | array                              | esta seccion es donde se mapea los atributos de los objetos que retorna el servicio, el orden de las columnas tiene directa relación con el orden de los objetos en este `array`
 
 ### array columns
