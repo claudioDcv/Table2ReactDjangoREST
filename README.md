@@ -123,11 +123,11 @@ changeText             | object                                                |
 
 changeText[Texto a Buscar] | string | el texto que quiere reemplazar del objeto que viene en el servicio
 
-changeText[Texto a Buscar].text | string/number | texto por el cual se reemplazara la coincidencia changeText[Text a Buscar].className | string | clases css para el div que encierra al nuevo texto `(ver codigo de ejemplo 03)`
+changeText[Texto a Buscar].text | string/number | texto por el cual se reemplazara la coincidencia changeText[Text a Buscar].className | string | clases css para el div que encierra al nuevo texto `(ver codigo de ejemplo 04)`
 
 ## Códigos de Ejemplo
 
-- 01 `Componente React para actions.view.Component`
+### 01 `Componente React para actions.view.Component`
 
 ```javascript
 import React, { Component } from 'react';
@@ -158,7 +158,7 @@ ComponentActionsView.propTypes = {
 export default ComponentActionsView;
 ```
 
-- 02 `functions` para cambiar el componente por defecto que se reenderiza en las columnas
+### 02 `functions` para cambiar el componente por defecto que se reenderiza en las columnas
 
 ```javascript
 function RUT(instance) {
@@ -172,7 +172,7 @@ function Phone(instance) {
 }
 ```
 
-- 03 `functions` para cambiar el comportamiento de los `input` que aparecen en los header de las columnas para filtrar contenido
+### 03 `functions` para cambiar el comportamiento de los `input` que aparecen en los header de las columnas para filtrar contenido
 
 ```javascript
 
@@ -203,13 +203,13 @@ function RUTInputSearch(options) {
 }
 ```
 
-- 04 Cambiar uno o varios texto
+### 04 Cambiar uno o varios texto
 
 ```json
 "changeText": {
     "Jaime": {
         "className": "btn-primary bnt",
-        "text": 'Fabio',
+        "text": "Fabio",
     },
     "Claudio": {
         "className": "color-main",
