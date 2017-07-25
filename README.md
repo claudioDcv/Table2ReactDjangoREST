@@ -99,7 +99,17 @@ actions.css            | string                             | string que sera pa
 hiddenActions          | boolean                            | posibilita oculat o mostrar la acciones, por defecto es `true`
 columns                | array                              | esta seccion es donde se mapea los atributos de los objetos que retorna el servicio, el orden de las columnas tiene directa relación con el orden de los objetos en este `array`
 
-PROPS NAME: options
+### array columns
+
+nombre               | valor                                    | descripcción
+-------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+title                | string                                   | titulo de la columna que se ve en el header
+name                 | string                                   | nombre del atributo del objeto que se desea mostrar , existe la posibilidad de motrar atributos anidados de la siguiente manera `roles.admin.id`
+textIsEmpty          | string                                   | texto que se mostrara si el valor del atributo esta vacio
+templateWithInstance | function: params instance, definitionCol | por defecto cada columna muestra el valor mapeado dentro del `<td>`, pero si se desea un comportamiento especifico, se puede pasar una funcion con ese contenido `(ver codigo de ejemplo 02)`, la funcion utilizada siempre tendra dos parametros que le pasa `Table2`: `instance`(la instancia del objeto actual), `definitionCol`(el array columns), por defecto no es necesario utilizar este atributo
+inputSeachComponet   | function: params handlerChange, element  | funcion para sobreescribir el input por defecto para los filtros, se pasa desde `Table2`: `handlerChange`(callback para ejecutar el onChange y enviar el value del input al servicio), `element`(objeto actual de la columna que se define en el array columns)
+
+handlerChange: this.onChangeSearch, element: props.element,
 
 # FIELD: columns
 
@@ -156,6 +166,20 @@ ComponentActionsView.propTypes = {
 };
 
 export default ComponentActionsView;
+```
+
+- 02 `functions` para cambiar el componente por defecto que se reenderiza en las columnas
+
+```javascript
+function RUT(instance) {
+    return ( <p>{rutFormat(rutAddDv(instance.rut))}</p>);
+}
+function User(instance) {
+    return (<p>{instance.user.is_active ? 'active' : 'inactive'</p>);
+}
+function Phone(instance) {
+    return (<p>{formatPhone(instance.phone)}</p>);
+}
 ```
 
 @name: attr.title: @type: String
