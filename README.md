@@ -109,32 +109,6 @@ textIsEmpty          | string                                                | t
 templateWithInstance | function: params instance, definitionCol              | por defecto cada columna muestra el valor mapeado dentro del `<td>`, pero si se desea un comportamiento especifico, se puede pasar una funcion con ese contenido `(ver codigo de ejemplo 02)`, la funcion utilizada siempre tendra dos parametros que le pasa `Table2`: `instance`(la instancia del objeto actual), `definitionCol`(el array columns), por defecto no es necesario utilizar este atributo
 inputSeachComponet   | function: params object.handlerChange, object.element | funcion para sobreescribir el input por defecto para los filtros, se pasa desde `Table2`: `object.handlerChange`(callback para ejecutar el onChange y enviar el value del input al servicio), `object.element`(objeto actual de la columna que se define en el array columns), `(ver codigo de ejemplo 03)`
 
-handlerChange: this.onChangeSearch, element: props.element,
-
-# FIELD: columns
-
-@name: attr.resolveIdToText @type: Object @example: { '1' : { label: 'energi', value: '1' }, ...
-
-# }
-
-@name: attr.mapChildren @type: Object @example: { ernc_factor: { name: 'ernc factor', type: 'danger', }, ...
-
-```
-
-},
-```
-
---------------------------------------------------------------------------------
-
-@name: attr.replaceBooleanValue @type: Object @example: { isTrue: 'OK', isFalse: 'Fail',
-
-```
-
-},
-```
-
---------------------------------------------------------------------------------
-
 ## Códigos de Ejemplo
 
 - 01 `Componente React para actions.view.Component`
@@ -212,28 +186,3 @@ function RUTInputSearch(options) {
     );
 }
 ```
-
-@name: attr.title: @type: String
-
-# @example: 'The Title'
-
-@name: attr.name @type: String
-
-# @example: 'name_column_service'
-
-@name: attr.textIsEmpty @type: String
-
-# @example: 'The field is Empty, Sorry!!!'
-
-# @name: attr.childrenTooltip: true TODO
-
-@name: attr.css @type: Object @example: { whiteSpace: 'nowrap', color: 'red', font-size: '15px', ...
-
-```
-
-},
-```
-
---------------------------------------------------------------------------------
-
-@name: attr.cssClass @type: String @example: 'btn btn-primary bg-color-active'
