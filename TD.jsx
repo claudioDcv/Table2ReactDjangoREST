@@ -18,6 +18,9 @@ class TD extends React.Component {
         }
 
         let valueText = text;
+        if (valueText == 0) {
+            return valueText;
+        }
         // If no exist text
         if (!valueText) {
             return attr.textIsEmpty;
@@ -28,8 +31,10 @@ class TD extends React.Component {
             valueText = valueText === 'Invalid date' ? attr.textIsEmpty : valueText;
         }
         if (attr.changeText) {
-            const out = attr.changeText[valueText].text;
-            valueText = (<div className={attr.changeText[valueText].className}>{out}</div>);
+            if (attr.changeText[valueText]) {
+              const out = attr.changeText[valueText].text;
+              valueText = (<div className={attr.changeText[valueText].className}>{out}</div>);
+            }
         }
         if (attr.mapChildren) {
             const children = [];
@@ -37,7 +42,7 @@ class TD extends React.Component {
                 if (Object.prototype.hasOwnProperty.call(valueText, msg)) {
                     const obj = attr.mapChildren[msg];
                     // add '' to convert all in string
-                    obj.value = `${evalTextIsBoolean(valueText[msg])}` || '123123';
+                    obj.value = `${evalTextIsBoolean(valueText[msg])}` || '';
                     // console.log(obj);
                     children.push(obj);
                 }
@@ -151,7 +156,8 @@ class TD extends React.Component {
                       >{attr.templateWithInstance(o, objectActualAttr)}</td>
                     );
                 }
-                const data = eval(`o.${attr.name}`) || {};
+                let data = eval(`o.${attr.name}`);
+                // data = data === 'undefined' || data === null
                 const value = TD.proxyText(data, attr);
                 try {
                     return (

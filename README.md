@@ -1,30 +1,36 @@
 # Documentation:
 
+> Esta tabla esta pensada pasa funcionar con Django Rest Framework y en conjunto la clase que viene incluida `PaginationDjangoRestTable` que debe ser el paginador a utilizar Esta tabla ademas soporta filtros avanzados que son los que utiliza `inputSeach` en concreto <https://github.com/philipn/django-rest-framework-filters>
+
+> Es importante mencionar que se puede utilizar con cualquier tpo de backend, mientras los `endpoints` retornen lo mismo que retorna django rest framework, en concreto el paginador
+
 ## libraries required:
 
 - "react": "15.5.4",
 - "moment": "2.18.0" <https://momentjs.com/>,
 
+  - agregar las dependencias con: `npm install` o `yarn install`
+
 ## Iniciar Tabla2
 
 ```javascript
 
-const service = 'https://host.com/api/';
+const api = 'https://host.com/api/';
 const query = '&organization_id=1';
 
 function getService() {
     const params = '';
     return {
-        api: service + '?',
+        api: api,
         query: query,
     };
 }
 
-<table2
+<Table2
     service={getService()}
     data={data}
     options={options}>
-</table2>
+</Table2>
 ```
 
 - atributo `service`: Si se utiliza un filtro desde afuera de `Table2` se debe pasar al atributo del componente `service` un objeto con la base de la `api` y el `query` inicial.
@@ -112,6 +118,12 @@ inputSeachComponet     | function: params object.handlerChange, object.element |
 inputSearchPlaceholder | string                                                | texto a mostrar como placeholder en el input search, por defecto si se omite, `Table2` crea uno con formato `Ingrese atribute_name`
 noSorting              | boolean                                               | sirve para quitar la capacidad de hacer `sorting` en una columna, por defecto es true
 css                    | object                                                | css ue se desee pasar al `<td>`
+dateFormat             | string                                                | esta propiedad se utiliza para traducir una fecha externa y darle un formato con `momment js` el string es el formato que se desea dar
+changeText             | object                                                | cambia un texto por otro y lo muestra dentro de un div que tambien recibe classes css
+
+changeText[Texto a Buscar] | string | el texto que quiere reemplazar del objeto que viene en el servicio
+
+changeText[Texto a Buscar].text | string/number | texto por el cual se reemplazara la coincidencia changeText[Text a Buscar].className | string | clases css para el div que encierra al nuevo texto `(ver codigo de ejemplo 03)`
 
 ## Códigos de Ejemplo
 
@@ -189,4 +201,23 @@ function RUTInputSearch(options) {
         />
     );
 }
+```
+
+- 04 Cambiar uno o varios texto
+
+```json
+changeText: {
+    Jaime: {
+        className: 'btn-primary bnt',
+        text: 'Fabio',
+    },
+    Claudio: {
+        className: 'color-main',
+        text: 'Esteban',
+    },
+    'Pedro Pablo': {
+        className: 'btn-info bnt',
+        text: 'Pedro',
+    },
+},
 ```

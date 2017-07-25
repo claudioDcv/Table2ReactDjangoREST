@@ -1,0 +1,23 @@
+{
+  "name": "table2",
+  "version": "1.0.0",
+  "description": "Table2 React JX and Django Rest Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudioDcv/Table2ReactDjangoREST.git"
+  },
+  "author": "claudio.dcv@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/claudioDcv/Table2ReactDjangoREST/issues"
+  },
+  "homepage": "https://github.com/claudioDcv/Table2ReactDjangoREST#readme",
+  "dependencies": {
+    "moment": "^2.18.0",
+    "react": "^15.5.4"
+  }
+}

@@ -40,11 +40,14 @@ export default class Table2 extends Component {
         }
         this.data = newData;
     }
-
+    apiValidate(api) {
+      return api.indexOf('?') != -1 ? `${api}?` : api;
+    }
     loadTable() {
         const props = this.props;
         if (sizeObj(props.data) && props.data.results.length > 0) {
             collection.dataset = props.data;
+            props.service.api = this.apiValidate(props.service.api);
             collection.dataset.actual = props.service.api + props.service.query;
             return (
               <table className={`table2 ${props.options.className}`}>
