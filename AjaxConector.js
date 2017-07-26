@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const AjaxClass = () => {
-    const request = function request(opt, cb) {
+    const request = function request(opt, callback) {
         axios(opt)
           .then((response) => {
-              cb(response.data);
+              callback(response.data);
           });
     };
     return {

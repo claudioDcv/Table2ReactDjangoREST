@@ -17,12 +17,14 @@
 
 const api = 'https://host.com/api/';
 const query = '&organization_id=1';
+const endpoint = 'organizations';
 
 function getService() {
     const params = '';
     return {
         api: api,
         query: query,
+        endpoint: endpoint,
     };
 }
 
@@ -34,11 +36,13 @@ function getService() {
 ```
 
 - atributo `service`: Si se utiliza un filtro desde afuera de `Table2` se debe pasar al atributo del componente `service` un objeto con la base de la `api` y el `query` inicial.
+- atrubuto `endpoint`: Hace referencia al api que se esta consultado por la tabla, por defecto se puede omitir y retornara en AjaxClass.request, el parametro `opt` un atributo llamado enpoint con el valor ya sea de `service.api` o si se asigna `service.endpoint` el valor dentro de ese atributo
 
   - Ejemplo:
 
     - `service` = <https://host.com/api/>
     - `query` = `&organization_id=1`
+    - `endpoint` = `organizations`;
 
 - atributo `data`: aquí se debe pasar el objeto que retorna el servicio (este objeto es el que genera Django REST Framework cuando se utiliza la clase `PaginationDjangoRestTable` incluida en este repositorio)
 

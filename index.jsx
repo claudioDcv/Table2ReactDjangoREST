@@ -41,7 +41,7 @@ export default class Table2 extends Component {
         this.data = newData;
     }
     apiValidate(api) {
-      return api.indexOf('?') != -1 ? `${api}?` : api;
+      return api.indexOf('?') != -1 ? api : `${api}?`;
     }
     loadTable() {
         const props = this.props;

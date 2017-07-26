@@ -106,6 +106,7 @@ export default class SortingButton extends Component {
             autJWT: true,
             url: `${url}${searchString}`,
             json: true,
+            endpoint: props.service.endpoint || props.service.api,
         }, fn);
     }
 

@@ -85,6 +85,7 @@ class Paginator extends Component {
             autJWT: true,
             url: `${props.service.api + props.service.query}&offset=${collection.dataset.limit * nPage}${sorting}${searchStringCreate(inputSearch)}`,
             json: true,
+            endpoint: props.service.endpoint || props.service.api,
         }, fn);
     }
 
@@ -103,6 +104,7 @@ class Paginator extends Component {
                     autJWT: true,
                     url: collection.dataset.next,
                     json: true,
+                    endpoint: props.service.endpoint || props.service.api,
                 }, fn);
             }
             break;
@@ -112,6 +114,7 @@ class Paginator extends Component {
                     autJWT: true,
                     url: collection.dataset.previous,
                     json: true,
+                    endpoint: props.service.endpoint || props.service.api,
                 }, fn);
             }
             break;
