@@ -45,6 +45,14 @@ export default class Table2 extends Component {
     }
     loadTable() {
         const props = this.props;
+        //Eval if this props has undefined
+        if (!props.data) {
+            return (
+              <div>
+                <p>No Existen Datos y/o la busqueda no coincide</p>
+              </div>
+            );
+        }
         if (sizeObj(props.data) && props.data.results.length > 0) {
             collection.dataset = props.data;
             props.service.api = this.apiValidate(props.service.api);

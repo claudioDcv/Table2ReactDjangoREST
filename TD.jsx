@@ -18,13 +18,26 @@ class TD extends React.Component {
         }
 
         let valueText = text;
+
+        // is Bolean
+        if (typeof valueText === 'boolean') {
+            if (valueText && attr.replaceBooleanValue) {
+                return attr.replaceBooleanValue.isTrue;
+            }else{
+                return attr.replaceBooleanValue.isFalse;
+            }
+
+        }
+
         if (valueText == 0) {
             return valueText;
         }
+
         // If no exist text
         if (!valueText) {
             return attr.textIsEmpty;
         }
+
         // if text is date
         if (attr.dateFormat !== undefined) {
             valueText = moment(new Date(valueText)).format(attr.dateFormat);

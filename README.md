@@ -126,6 +126,9 @@ dateFormat                      | string                                        
 changeText                      | object                                                | cambia un texto por otro y lo muestra dentro de un div que tambien recibe classes css
 changeText[Texto a Buscar]      | string                                                | el texto que quiere reemplazar del objeto que viene en el servicio
 changeText[Texto a Buscar].text | string/number                                         | texto por el cual se reemplazara la coincidencia changeText[Text a Buscar].className                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | string | clases css para el div que encierra al nuevo texto [ver codigo de ejemplo 04](#04-cambiar-uno-o-varios-texto)
+replaceBooleanValue             | object                                                | un objeto con 2 propiedades para modificar un elemento que sea boolean
+replaceBooleanValue.isTrue      | string/JXS                                            | si el valor del elemento es `true`, sera cambiado por lo que se defina en este atributo
+replaceBooleanValue.isFalse     | string/JXS                                            | si el valor del elemento es `false`, sera cambiado por lo que se defina en este atributo
 
 ## Códigos de Ejemplo
 
@@ -221,5 +224,14 @@ function RUTInputSearch(options) {
         "className": "btn-info bnt",
         "text": "Pedro",
     }
+},
+```
+
+### 05 Cambiar valores Booleanos
+
+```javascript
+replaceBooleanValue: {
+    isTrue: (<button classname="btn btn-success btn-sm">Si</button>),
+    isFalse: (<button classname="btn btn-danger btn-sm">No</button>),
 },
 ```
